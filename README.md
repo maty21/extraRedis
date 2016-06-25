@@ -1,6 +1,6 @@
 # extraRedis
 
-[for more information visit https://maty21.github.io/extraRedis/](https://maty21.github.io/extraRedis/ "ExtraRedis Homepage")
+[for more information visit extraRedis site](https://maty21.github.io/extraRedis/ "ExtraRedis Homepage")
 
 [![NPM](https://nodei.co/npm/extraRedis.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/extraRedis/)
 
