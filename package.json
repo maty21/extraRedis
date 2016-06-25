@@ -1,7 +1,7 @@
 {
   "name": "redis-request-reply",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "description": "redis api that provides lot of features",
   "main": "app.js",
   "dependencies": {
     "guid": "^0.0.12",
@@ -13,6 +13,28 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Maty Zisserman",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maty21/extraRedis.git"
+  },
+  "keywords": [
+    "redis",
+    "rx",
+    "rx.js",
+    "producer",
+    "consumer",
+    "request",
+    "reply",
+    "pub",
+    "sub",
+    "publish",
+    "subscribe",
+    "filter"
+  ],
+  "bugs": {
+    "url": "https://github.com/maty21/extraRedis/issues"
+  },
+  "homepage": "https://github.com/maty21/extraRedis#readme"
 }

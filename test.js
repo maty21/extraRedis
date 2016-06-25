@@ -1,50 +1,62 @@
 'use strict'
-var extraRedis = require('./extraRedis');
+let extraRedis = require('./lib/extraRedis');
 
-var redisInstance = new extraRedis({port:6379,host:"127.0.0.1"});
-redisInstance.on('foo',(message)=>{
+// creating new object
+var ERedis = new extraRedis({port:6379,host:"127.0.0.1"});
+
+//creating simple pub sub with multiple subscribers
+ERedis.on('foo',(message)=>{
     console.log('foo -> '+message);
 },guid=>{console.log('guidfoo-> '+guid)})
 
-redisInstance.on('foo',(message)=>{
+ERedis.on('foo',(message)=>{
     console.log('foo2 -> '+message);
 },guid=>{console.log('guidfoo2-> '+guid)})
 
-redisInstance.emit('foo','bar');
+ERedis.emit('foo','bar');
 
 
-redisInstance.requestReply.on('reqReplyFoo',(message,func)=>{
+
+//creating request reply sample so only the sending emtier will get directly the  message for his answer
+ERedis.requestReply.on('reqReplyFoo',(message,func)=>{
     console.log('reqReplyFoo=> '+message);
     func('reqReplyOnBar');
 })
 
-redisInstance.requestReply.emit('reqReplyFoo','reqReplyBar').then((message)=>{
+ERedis.requestReply.emit('reqReplyFoo','reqReplyBar').then((message)=>{
     console.log('reqReplyOnFoo-> '+message);
 
 }).catch((e)=>{ console.log('ERROR!!!! '+e)});
 
-redisInstance.producerConsumer.createJob('prodConsTest');
 
-redisInstance.producerConsumer.consume('prodConsTest',(message)=>{
+
+//creating producer consumers sample
+ERedis.producerConsumer.createJob('prodConsTest');
+
+ERedis.producerConsumer.consume('prodConsTest',(message)=>{
     console.log(`message consumed -> ${message}`);
 });
-redisInstance.producerConsumer.consume('prodConsTest',(message)=>{
+ERedis.producerConsumer.consume('prodConsTest',(message)=>{
     console.log(`message consumed -> ${message}`);
 });
 
 
 setTimeout(()=>{
-    redisInstance.producerConsumer.produce('produce job 1');
-    redisInstance.producerConsumer.produce('produce job 2');
+    ERedis.producerConsumer.produce('produce job 1');
+    ERedis.producerConsumer.produce('produce job 2');
 },5000)
 
-redisInstance.queryable.createQueryableInstance('reqReplyFoo')
+
+//creating queryable instance  sample
+ERedis.queryable.createQueryableInstance('foo')
                        .subscribe(message =>{
                            console.log(`queryable Instance -> ${message}`)
                        })
-redisInstance.queryable.createQueryableInstance('reqReplyFoo')
+
+//creating queryable instance  sample with filter
+ERedis.queryable.createQueryableInstance('foo')
     .filter((message)=>{
-        return message.valueOf() =='"reqReplyBar"'
+        return message.valueOf() =='bar'
     })
     .subscribe(message =>{
         console.log(`queryable Instance with filter -> ${message}`)
