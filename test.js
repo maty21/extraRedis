@@ -36,4 +36,16 @@ redisInstance.producerConsumer.consume('prodConsTest',(message)=>{
 setTimeout(()=>{
     redisInstance.producerConsumer.produce('produce job 1');
     redisInstance.producerConsumer.produce('produce job 2');
-},2000)
+},5000)
+
+redisInstance.queryable.createQueryableInstance('reqReplyFoo')
+                       .subscribe(message =>{
+                           console.log(`queryable Instance -> ${message}`)
+                       })
+redisInstance.queryable.createQueryableInstance('reqReplyFoo')
+    .filter((message)=>{
+        return message.valueOf() =='"reqReplyBar"'
+    })
+    .subscribe(message =>{
+        console.log(`queryable Instance with filter -> ${message}`)
+    })

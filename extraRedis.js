@@ -3,6 +3,7 @@ var Redis = require('ioredis');
 var Guid = require('guid');
 var RequestReply = require('./requestReply');
 var ProducerConsumer = require('./producerConsumer');
+var Queryable = require('./queryable');
 class redisStream {
 
     constructor(redisOptions) {
@@ -12,6 +13,7 @@ class redisStream {
         this._subscriberMap = new Map();
         this.requestReply = new RequestReply(redisOptions,this);
         this.producerConsumer = new ProducerConsumer(redisOptions,this);
+        this.queryable= new Queryable(redisOptions,this);
     }
 
     init(redisOptions) {
