@@ -1,5 +1,5 @@
 {
-  "name": "redis-request-reply",
+  "name": "extraRedis",
   "version": "1.1.0",
   "description": "redis api that provides lot of features",
   "main": "app.js",

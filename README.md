@@ -1,4 +1,8 @@
 # extraRedis
+
+
+[![NPM](https://nodei.co/npm/extraRedis.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/extraRedis/)
+
 ###redis api that provides lot of features :
 - [x] **pub/sub -** send and get messages from the job during proccessing without needing to if your message
 - [x] **request/reply -** the abiliy to publish message that the response will return directly to you with simple api based on promises .
