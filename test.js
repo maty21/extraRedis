@@ -40,3 +40,18 @@ redisInstance.requestReply.emit('reqReplyFoo','reqReplyBar').then((message)=>{
     console.log('reqReplyOnFoo-> '+message);
 
 }).catch((e)=>{ console.log('ERROR!!!! '+e)});
+
+redisInstance.producerConsumer.createJob('prodConsTest');
+
+redisInstance.producerConsumer.consume('prodConsTest',(message)=>{
+    console.log(`message consumed -> ${message}`);
+});
+redisInstance.producerConsumer.consume('prodConsTest',(message)=>{
+    console.log(`message consumed -> ${message}`);
+});
+
+
+setTimeout(()=>{
+    redisInstance.producerConsumer.produce('produce job 1');
+    redisInstance.producerConsumer.produce('produce job 2');
+},2000)
