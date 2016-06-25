@@ -31,12 +31,12 @@ redisInstance.requestReply('reqReplyFoo','reqReplyBar').then((message)=>{
 }).catch((e)=>{ console.log('ERROR!!!! '+e)});*/
 
 
-redisInstance.reqRep.on('reqReplyFoo',(message,func)=>{
+redisInstance.requestReply.on('reqReplyFoo',(message,func)=>{
     console.log('reqReplyFoo=> '+message);
     func('reqReplyOnBar');
 })
 
-redisInstance.reqRep.emit('reqReplyFoo','reqReplyBar').then((message)=>{
+redisInstance.requestReply.emit('reqReplyFoo','reqReplyBar').then((message)=>{
     console.log('reqReplyOnFoo-> '+message);
 
 }).catch((e)=>{ console.log('ERROR!!!! '+e)});
