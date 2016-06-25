@@ -27,7 +27,7 @@ ERedis.emit('foo','bar');
 ```
 
 
-###  creating request reply sample so only the sending emtier will get directly the  message for his answer
+###  creating request reply so only the sending emtier will get directly the  message for his answer
 
 ```javascript
 ERedis.requestReply.on('reqReplyFoo',(message,func)=>{
@@ -42,7 +42,7 @@ ERedis.requestReply.emit('reqReplyFoo','reqReplyBar').then((message)=>{
 
 ```
 
-### creating producer consumers sample so only one consumer get a job at a time
+### creating producer consumers so only one consumer get a job at a time
 
 ```javascript
 
@@ -63,7 +63,7 @@ setTimeout(()=>{
 
 ```
 
-### creating queryable instance  sample
+### creating queryable instance
 
 ```javascript
 
@@ -74,7 +74,7 @@ ERedis.queryable.createQueryableInstance('foo')
 
 ```
 
-### creating queryable instance  sample with filter
+### creating queryable instance with filter
 
 ```javascript
 
