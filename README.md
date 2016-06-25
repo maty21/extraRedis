@@ -1,5 +1,5 @@
 # extraRedis
-###redis api that provides lot of features
+###redis api that provides lot of features :
 - [x] **pub/sub -** send and get messages from the job during proccessing without needing to if your message
 - [x] **request/reply -** the abiliy to publish message that the response will return directly to you with simple api based on promises .
 - [x] **producer/consumer -** now you can create simple job that will be sent to only one consumer at a time
@@ -31,8 +31,9 @@ ERedis.on('foo',(message)=>{
 
 ERedis.emit('foo','bar');
 
-//foo -> bar
-//foo2 -> bar
+// foo -> bar
+// foo2 -> bar
+
 ```
 
 
