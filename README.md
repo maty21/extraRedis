@@ -31,6 +31,8 @@ ERedis.on('foo',(message)=>{
 
 ERedis.emit('foo','bar');
 
+//foo -> bar
+//foo2 -> bar
 ```
 
 
@@ -38,7 +40,7 @@ ERedis.emit('foo','bar');
 
 ```javascript
 ERedis.requestReply.on('reqReplyFoo',(message,func)=>{
-    console.log('reqReplyFoo=> '+message);
+    console.log('reqReplyFoo-> '+message);
     func('reqReplyOnBar');
 })
 
@@ -46,6 +48,9 @@ ERedis.requestReply.emit('reqReplyFoo','reqReplyBar').then((message)=>{
     console.log('reqReplyOnFoo-> '+message);
 
 }).catch((e)=>{ console.log('ERROR!!!! '+e)});
+
+// reqReplyFoo-> reqReplyBar
+// reqReplyOnFoo-> reqReplyOnBar
 
 ```
 
@@ -68,6 +73,9 @@ setTimeout(()=>{
     ERedis.producerConsumer.produce('produce job 2');
 },5000)
 
+// message consumed -> produce job 1
+// message consumed -> produce job 2
+
 ```
 
 #### creating queryable instance
@@ -79,7 +87,10 @@ ERedis.queryable.createQueryableInstance('foo')
                            console.log(`queryable Instance -> ${message}`)
                        })
 
+// queryable Instance -> bar
+
 ```
+
 
 #### creating queryable instance with filter
 
@@ -92,6 +103,7 @@ ERedis.queryable.createQueryableInstance('foo')
     .subscribe(message =>{
         console.log(`queryable Instance with filter -> ${message}`)
     })
+// queryable Instance with filter -> bar
 
 ```
 
