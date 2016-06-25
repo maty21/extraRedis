@@ -5,7 +5,7 @@
 [![NPM](https://nodei.co/npm/extraRedis.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/extraRedis/)
 
 ###redis api that provides lot of features :
-- [x] **pub/sub -** send and get messages from the job during proccessing without needing to if your message
+- [x] **pub/sub -**  a simple api for publishing and subscribing messages without the needing to listen 'message' and to if your topic on it
 - [x] **request/reply -** the abiliy to publish message that the response will return directly to you with simple api based on promises .
 - [x] **producer/consumer -** now you can create simple job that will be sent to only one consumer at a time
 - [x] **queryable -** the ability to query your returned via verity of criteria based on rx observable
@@ -84,7 +84,7 @@ setTimeout(()=>{
 
 ```
 
-#### creating queryable instance
+#### creating queryable instance based rx
 
 ```javascript
 
