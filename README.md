@@ -1,16 +1,23 @@
 # extraRedis
 ###redis api that provides lot of features
-
+- [x] **pub/sub -** send and get messages from the job during proccessing without needing to if your message
+- [x] **request/reply -** the abiliy to publish message that the response will return directly to you with simple api based on promises .
+- [x] **producer/consumer -** now you can create simple job that will be sent to only one consumer at a time
+- [x] **queryable -** the ability to query your returned via verity of criteria based on rx observable
+- [ ] **merging multiple subscribers into one data stream**- (in the next few days) an ability to limit the number of workers that will handle the job
+- [ ] **producer consumer improvements**- (in the next few days) an ability to limit the number of workers that will handle the job
+More details below under the user instructions section
 
 ### Usage instructions:
-### creating new object
+
+#### creating new object
 
 ```javascript
 
 var ERedis = new extraRedis({port:6379,host:"127.0.0.1"});
 ```
 
-### creating simple pub sub with multiple subscribers
+#### creating simple pub sub with multiple subscribers
 
 ```javascript
 
@@ -27,7 +34,7 @@ ERedis.emit('foo','bar');
 ```
 
 
-###  creating request reply so only the sending emtier will get directly the  message for his answer
+####  creating request reply so only the sending emtier will get directly the  message for his answer
 
 ```javascript
 ERedis.requestReply.on('reqReplyFoo',(message,func)=>{
@@ -42,7 +49,7 @@ ERedis.requestReply.emit('reqReplyFoo','reqReplyBar').then((message)=>{
 
 ```
 
-### creating producer consumers so only one consumer get a job at a time
+#### creating producer consumers so only one consumer get a job at a time
 
 ```javascript
 
@@ -63,7 +70,7 @@ setTimeout(()=>{
 
 ```
 
-### creating queryable instance
+#### creating queryable instance
 
 ```javascript
 
@@ -74,7 +81,7 @@ ERedis.queryable.createQueryableInstance('foo')
 
 ```
 
-### creating queryable instance with filter
+#### creating queryable instance with filter
 
 ```javascript
 
