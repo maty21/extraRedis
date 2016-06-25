@@ -13,24 +13,6 @@ redisInstance.on('foo',(message)=>{
 redisInstance.emit('foo','bar');
 
 
-
-/*redisInstance.requestReplyOn('reqReplyFoo',(message,func)=>{
-    console.log('reqReplyFoo=> '+message);
-    func('reqReplyOnBar');
-})
-
-redisInstance.requestReply('reqReplyFoo','reqReplyBar').then((message)=>{
-    console.log('reqReplyOnFoo-> '+message);
-    
-}).catch((e)=>{ console.log('ERROR!!!! '+e)});
-
-
-redisInstance.requestReply('reqReplyFoo','reqReplyBar').then((message)=>{
-    console.log('reqReplyOnFoo2-> '+message);
-
-}).catch((e)=>{ console.log('ERROR!!!! '+e)});*/
-
-
 redisInstance.requestReply.on('reqReplyFoo',(message,func)=>{
     console.log('reqReplyFoo=> '+message);
     func('reqReplyOnBar');
