@@ -61,23 +61,36 @@ ERedis.requestReply.emit('reqReplyFoo','reqReplyBar').then((message)=>{
 ```
 
 #### creating producer consumers so only one consumer get a job at a time
+##### producer consumer includes the following features:
+- job queue: if there is more jobs than ready for work consumers than job added to queue
+             and waiting for available consumers
+- keepAliveConsumerState: clear not available consumers in order to ignore unconsumed jobs
 
 ```javascript
 
 ERedis.producerConsumer.createJob('prodConsTest');
 
-ERedis.producerConsumer.consume('prodConsTest',(message)=>{
-    console.log(`message consumed -> ${message}`);
+ERedis.producerConsumer.consume('prodConsTest', (message, finishFunction)=> {
+    setTimeout(()=> {
+        console.log(`message consumed -> ${message}`);
+        finishFunction();
+    }, 5000)
+
 });
-ERedis.producerConsumer.consume('prodConsTest',(message)=>{
-    console.log(`message consumed -> ${message}`);
+ERedis.producerConsumer.consume('prodConsTest', (message, finishFunction)=> {
+    setTimeout(()=> {
+        console.log(`message consumed -> ${message}`);
+        finishFunction();
+    }, 5000)
 });
 
 
-setTimeout(()=>{
+setTimeout(()=> {
     ERedis.producerConsumer.produce('produce job 1');
     ERedis.producerConsumer.produce('produce job 2');
-},5000)
+    ERedis.producerConsumer.produce('produce job 3');
+    console.log("sending job for producing")
+}, 5000)
 
 // message consumed -> produce job 1
 // message consumed -> produce job 2
