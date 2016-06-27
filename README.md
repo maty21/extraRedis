@@ -61,7 +61,7 @@ ERedis.requestReply.emit('reqReplyFoo','reqReplyBar').then((message)=>{
 ```
 
 #### creating producer consumers so only one consumer get a job at a time
-##### producer consumer includes the following features:
+
 - job queue: if there is more jobs than ready for work consumers than job added to queue
              and waiting for available consumers
 - keepAliveConsumerState: clear not available consumers in order to ignore unconsumed jobs
