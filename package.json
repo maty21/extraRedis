@@ -2,7 +2,7 @@
   "name": "extraRedis",
   "version": "1.4.1",
   "description": "redis api that provides lot of features",
-  "main": "app.js",
+  "main": "lib/extraRedis.js",
   "dependencies": {
     "collections": "^5.0.4",
     "guid": "^0.0.12",
